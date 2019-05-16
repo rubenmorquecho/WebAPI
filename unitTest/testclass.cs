@@ -37,7 +37,6 @@ public class testclass
   {
       Assert.True(Program.isOdd(mynumber));
    }
-
     ///////////////////////////////    G E T  /////////////////////////////////////////
    [Fact]
   public async Task APIGet()
@@ -55,6 +54,30 @@ public class testclass
     //Assert.True (response.IsSuccessStatusCode);
     Assert.Equal(System.Net.HttpStatusCode.OK, response.StatusCode);
 
+       
+  }
+    ///////////////////////////////    G E T  A L L  /////////////////////////////////////////
+   [Fact]
+  public async Task APIGetALL()
+  {
+    var client = new HttpClient();
+    client.BaseAddress = new Uri("https://corewebapitraining.azurewebsites.net/");
+    client.DefaultRequestHeaders.Accept.Clear();
+    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+    HttpResponseMessage response;
+    UserDetails userdetails = new UserDetails();
+
+    response = await client.GetAsync("api/user");
+    Assert.Equal(System.Net.HttpStatusCode.OK, response.StatusCode);
+    //response = await client.GetAsync("api/user");
+    //if (response.IsSuccessStatusCode)
+    //{
+    //    List<UserDetails> alluserdetails = await response.Content.ReadAsAsync<List<UserDetails>>();
+    //    for (int i = 0; i < alluserdetails.Count; i++)
+    //    {
+    //        Console.WriteLine("{0}\t{1}\t{2}\t", alluserdetails[i].userid, alluserdetails[i].username, alluserdetails[i].education);
+    //    }
+    //}
        
   }
    
