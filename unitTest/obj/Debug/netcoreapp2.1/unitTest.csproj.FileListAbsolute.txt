@@ -1,0 +1,14 @@
+C:\Users\U92070\unitTest\bin\Debug\netcoreapp2.1\unitTest.deps.json
+C:\Users\U92070\unitTest\bin\Debug\netcoreapp2.1\unitTest.runtimeconfig.json
+C:\Users\U92070\unitTest\bin\Debug\netcoreapp2.1\unitTest.runtimeconfig.dev.json
+c:\Users\U92070\unitTest\bin\Debug\netcoreapp2.1\unitTest.dll
+c:\Users\U92070\unitTest\bin\Debug\netcoreapp2.1\unitTest.pdb
+c:\Users\U92070\unitTest\obj\Debug\netcoreapp2.1\unitTest.csprojAssemblyReference.cache
+c:\Users\U92070\unitTest\obj\Debug\netcoreapp2.1\unitTest.csproj.CoreCompileInputs.cache
+c:\Users\U92070\unitTest\obj\Debug\netcoreapp2.1\unitTest.AssemblyInfoInputs.cache
+c:\Users\U92070\unitTest\obj\Debug\netcoreapp2.1\unitTest.AssemblyInfo.cs
+c:\Users\U92070\unitTest\obj\Debug\netcoreapp2.1\unitTest.dll
+c:\Users\U92070\unitTest\obj\Debug\netcoreapp2.1\unitTest.pdb
+C:\Users\U92070\unitTest\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\U92070\unitTest\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\U92070\unitTest\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
