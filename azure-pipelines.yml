@@ -26,12 +26,16 @@ variables:
   buildConfiguration: 'Release'
 
   steps:
+# #################################3  R U N   Y O U R   T E S T S  ##########################
+steps:
 # ...
-# do this after other tasks such as building
-- task: DotNetCoreCLI@2
+# do this after your tests have run
+- script: dotnet test unitTest --logger trx
+- task: PublishTestResults@2
+  condition: succeededOrFailed()
   inputs:
-    command: test
-    projects: '**/*Test/*.csproj'
+    testRunner: VSTest
+    testResultsFiles: '**/*.trx'
     arguments: '--configuration $(buildConfiguration)'
 
 # steps:
