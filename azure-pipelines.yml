@@ -6,24 +6,35 @@
 trigger:
 - master
 
-strategy:
-  matrix:
-    linux:
-      imageName: "ubuntu-latest"
-    mac:
-      imageName: "macos-10.13"
-    windows:
-      imageName: "vs2017-win2016"
-  maxParallel: 3
+# strategy:
+#   matrix:
+#     linux:
+#       imageName: "ubuntu-latest"
+#     mac:
+#       imageName: "macos-10.13"
+#     windows:
+#       imageName: "vs2017-win2016"
+#   maxParallel: 3
+
+# pool:
+#   vmImage: $(imageName)
 
 pool:
-  vmImage: $(imageName)
+  vmImage: 'ubuntu-latest'
+
+variables:
+  buildConfiguration: 'Release'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- script: dotnet build --configuration $(buildConfiguration)
+  displayName: 'dotnet build $(buildConfiguration)'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+
+# steps:
+# - script: echo Hello, world!
+#  displayName: 'Run a one-line script'
+
+# - script: |
+#     echo Add other tasks to build, test, and deploy your project.
+#     echo See https://aka.ms/yaml
+#   displayName: 'Run a multi-line script'
