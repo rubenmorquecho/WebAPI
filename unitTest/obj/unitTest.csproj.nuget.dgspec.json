@@ -50,6 +50,10 @@
               "version": "[2.1.0, )",
               "autoReferenced": true
             },
+            "Microsoft.TeamFoundationServer.Client": {
+              "target": "Package",
+              "version": "[16.151.0-preview, )"
+            },
             "xunit": {
               "target": "Package",
               "version": "[2.4.1, )"

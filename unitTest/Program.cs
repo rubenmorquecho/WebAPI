@@ -4,28 +4,63 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net;
 
 
-//namespace unitTest
-//{
-     class Program
+    public class program
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-            int yy = add(4,5);
-            Console.WriteLine(yy);
-            Console.WriteLine (isOdd(5));
+      
+       /*  public HttpClient client = new HttpClient();
+       
 
-        }
-        public static int add(int x, int y)
+       //////////////////////////////////////  S H O W   U S E R   //////////////////
+        public void ShowUser(UserDetails userdetails)
         {
-            return x+y;
+            Console.WriteLine($"Name: {userdetails.name}\tEducation: " +
+                $"{userdetails.jobTitle}\tLocation: {userdetails.isFired}");
         }
-        public static bool isOdd(int value)
+
+        public async Task<Uri> CreateUserAsync(UserDetails userdetails)
         {
-            return value % 2 ==1;
+            HttpResponseMessage response = await client.PostAsJsonAsync(
+                "api/user", userdetails);
+            response.EnsureSuccessStatusCode();
+
+            // return URI of the created resource.
+            return response.Headers.Location;
         }
-         
+
+        public async Task<UserDetails> GetUserAsync(string path)
+        {
+            UserDetails userdetails = null;
+            HttpResponseMessage response = await client.GetAsync(path);
+            if (response.IsSuccessStatusCode)
+            {
+                userdetails = await response.Content.ReadAsAsync<UserDetails>();
+            }
+            return userdetails;
+        }
+
+        public async Task<UserDetails> UpdateUserAsync(UserDetails userdetails)
+        {
+            HttpResponseMessage response = await client.PutAsJsonAsync(
+                $"api/user/{userdetails.id}", userdetails);
+            response.EnsureSuccessStatusCode();
+
+            // Deserialize the updated product from the response body.
+            userdetails = await response.Content.ReadAsAsync<UserDetails>();
+            return userdetails;
+        }
+
+        public async Task<HttpStatusCode> DeleteUserAsync(string id)
+        {
+            HttpResponseMessage response = await client.DeleteAsync(
+                $"api/user/{id}");
+            return response.StatusCode;
+        } */
+        static void Main()
+        {
+            // Main 
+        }
+
     }
-//}
