@@ -1,5 +1,6 @@
 using Xunit;
-using Xunit.Abstractions;
+// 
+//using Xunit.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,135 +8,78 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net.Http.Headers;
 
-
-public class testclass 
+public class testclass
 {
+ // private readonly ITestOutputHelper output;
 
-
-  private readonly ITestOutputHelper output;
-
-    public testclass(ITestOutputHelper output)
+ /*    public MyTestClass(ITestOutputHelper output)
     {
         this.output = output;
-    }
+    } */
 
     [Fact]
-    public void MyTest()
-    {
-        var temp = "my class!";
-        output.WriteLine("This is output from {0}", temp);
-    }
- ///////////////////////////////    P O S T   /////////////////////////////////////////
-[Fact(DisplayName = "APIPost")]
-  public async Task Test_1APIPost()
-    {
-        var client = new HttpClient();
-        client.BaseAddress = new Uri("https://restool-sample-app.herokuapp.com/");
-        client.DefaultRequestHeaders.Accept.Clear();
-        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-         UserDetails userdetails = new UserDetails
-                {
-                    id = "333",
-                    name = "Rubennnnnnnnnnnnnnnnnnnnnnnnn" + DateTime.Today.ToLongDateString(),
-                    jobTitle="MSCsd.",
-                    isFired = false
-                };
-        HttpResponseMessage response = await client.PostAsJsonAsync("api/crue", userdetails);
-        userdetails = await response.Content.ReadAsAsync<UserDetails>();
-        Assert.Equal(System.Net.HttpStatusCode.OK, response.StatusCode);
+   public void PassingAddTest()
+  {
+      Assert.Equal(4,  Program.add(2,2));
 
-    }
+   }
 
+    [Fact]
+   public void FailingTest()
+  {
+      Assert.NotEqual(5,  Program.add(2,2));
+
+   }
+    [Theory]
+    [InlineData(3)]
+    [InlineData(5)]
+    [InlineData(7)]
+   public void MyFirstTheory(int mynumber)
+  {
+      Assert.True(Program.isOdd(mynumber));
+   }
     ///////////////////////////////    G E T  /////////////////////////////////////////
-
-[Fact(DisplayName = "APIGet")]
-public async Task Test_2APIGet()
-{
-    var client = new HttpClient();
-    client.BaseAddress = new Uri("https://restool-sample-app.herokuapp.com/");
-    client.DefaultRequestHeaders.Accept.Clear();
-    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-    HttpResponseMessage response;
-    UserDetails userdetails = new UserDetails();
-    userdetails.id="333";
-    response = await client.GetAsync($"api/crue/{userdetails.id}");
-    
-    userdetails = await response.Content.ReadAsAsync<UserDetails>();
-    Assert.Equal(System.Net.HttpStatusCode.OK, response.StatusCode);
-  }
-     ///////////////////////////////    G E T  A L L  /////////////////////////////////////////
-[Fact(DisplayName = "APIGetALL")]
-  public async Task Test_3APIGetALL()
+   [Fact]
+  public async Task APIGet()
   {
     var client = new HttpClient();
-    client.BaseAddress = new Uri("https://restool-sample-app.herokuapp.com/");
+    client.BaseAddress = new Uri("https://corewebapitraining.azurewebsites.net/");
+    client.DefaultRequestHeaders.Accept.Clear();
+    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+    HttpResponseMessage response;
+    UserDetails userdetails = new UserDetails();
+    //Console.WriteLine("GET 1");
+    //output.WriteLine("GET {0}", temp);
+    //output.WriteLine("GET ");
+    response = await client.GetAsync("api/user/1");
+    //Assert.True (response.IsSuccessStatusCode);
+    Assert.Equal(System.Net.HttpStatusCode.OK, response.StatusCode);
+
+       
+  }
+    ///////////////////////////////    G E T  A L L  /////////////////////////////////////////
+   [Fact]
+  public async Task APIGetALL()
+  {
+    var client = new HttpClient();
+    client.BaseAddress = new Uri("https://corewebapitraining.azurewebsites.net/");
     client.DefaultRequestHeaders.Accept.Clear();
     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
     HttpResponseMessage response;
     UserDetails userdetails = new UserDetails();
 
-    response = await client.GetAsync("api/crue");
-    List<UserDetails> alluserdetails = await response.Content.ReadAsAsync<List<UserDetails>>();
+    response = await client.GetAsync("api/user");
     Assert.Equal(System.Net.HttpStatusCode.OK, response.StatusCode);
+    //response = await client.GetAsync("api/user");
+    //if (response.IsSuccessStatusCode)
+    //{
+    //    List<UserDetails> alluserdetails = await response.Content.ReadAsAsync<List<UserDetails>>();
     //    for (int i = 0; i < alluserdetails.Count; i++)
     //    {
     //        Console.WriteLine("{0}\t{1}\t{2}\t", alluserdetails[i].userid, alluserdetails[i].username, alluserdetails[i].education);
     //    }
-         
+    //}
+       
   }
-
-    ///////////////////////////////    P U T    /////////////////////////////////////////
-
- [Fact(DisplayName = "APIPUT")]
-  public async Task Test_4APIPut()
-  {
-
-    var client = new HttpClient();
-    client.BaseAddress = new Uri("https://restool-sample-app.herokuapp.com/");
-    client.DefaultRequestHeaders.Accept.Clear();
-    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-    UserDetails userdetailspost = new UserDetails
-    {
-      id = "1234",
-      name = "Rubennnnnnnnnnnnnnnnnnnnnnnnn" + DateTime.Today.ToLongDateString(),
-      jobTitle="MSCsd.",
-      isFired = false
-    };
-    HttpResponseMessage responsepost = await client.PostAsJsonAsync("api/crue", userdetailspost);
-
-
-    //var client = new HttpClient();
-    //client.BaseAddress = new Uri("https://restool-sample-app.herokuapp.com/");
-    //client.DefaultRequestHeaders.Accept.Clear();
-    //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-    UserDetails userdetails = new UserDetails
-          {
-                   id = "1234",
-                   name = "Ruben" + DateTime.Today.ToLongDateString(),
-                   jobTitle="MSC.",
-                   isFired = true
-          };
-    HttpResponseMessage response = await client.PutAsJsonAsync($"api/crue/{userdetails.id}", userdetails);
-    //userdetails = await response.Content.ReadAsAsync<UserDetails>();
-    Assert.Equal(System.Net.HttpStatusCode.OK, response.StatusCode);
-  }
- ////////////////////////////  D E L E T E ////////////////////////////////////
-  [Fact(DisplayName = "APIDELETE")]
-  public async Task Test_5APIDelete()
-  {
-    var client = new HttpClient();
-    client.BaseAddress = new Uri("https://restool-sample-app.herokuapp.com/");
-    client.DefaultRequestHeaders.Accept.Clear();
-    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-    UserDetails userdetails = new UserDetails
-          {
-                   id = "333",
-                   //name = "Ruben" + DateTime.Today.ToLongDateString(),
-                   //jobTitle="MSC.",
-                   //isFired = false
-          };
-    HttpResponseMessage response = await client.DeleteAsync($"api/crue/{userdetails.id}");
-    Assert.Equal(System.Net.HttpStatusCode.OK, response.StatusCode);
-  }
-
+   
 }
