@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\U92070\\unitTest\\unitTest.csproj": {}
+    "C:\\Users\\U92070\\unitTest2\\unitTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\U92070\\unitTest\\unitTest.csproj": {
+    "C:\\Users\\U92070\\unitTest2\\unitTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\U92070\\unitTest\\unitTest.csproj",
+        "projectUniqueName": "C:\\Users\\U92070\\unitTest2\\unitTest.csproj",
         "projectName": "unitTest",
-        "projectPath": "C:\\Users\\U92070\\unitTest\\unitTest.csproj",
+        "projectPath": "C:\\Users\\U92070\\unitTest2\\unitTest.csproj",
         "packagesPath": "C:\\Users\\U92070\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\U92070\\unitTest\\obj\\",
+        "outputPath": "C:\\Users\\U92070\\unitTest2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -49,6 +49,14 @@
               "target": "Package",
               "version": "[2.1.0, )",
               "autoReferenced": true
+            },
+            "Microsoft.TeamFoundationServer.Client": {
+              "target": "Package",
+              "version": "[16.151.0-preview, )"
+            },
+            "Xunit.Priority": {
+              "target": "Package",
+              "version": "[1.0.10, )"
             },
             "xunit": {
               "target": "Package",
