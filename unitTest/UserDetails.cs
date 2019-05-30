@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-   
+   //
      public class UserDetails
     {
         public string id { get; set; }
