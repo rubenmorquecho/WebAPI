@@ -83,6 +83,25 @@ public async Task Test_2APIGet()
     //    }
          
   }
+  [Fact(DisplayName = "APIGetALL2")]
+  public async Task APIGetALL2()
+  {
+    var client = new HttpClient();
+    client.BaseAddress = new Uri("https://restool-sample-app.herokuapp.com/");
+    client.DefaultRequestHeaders.Accept.Clear();
+    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+    HttpResponseMessage response;
+    UserDetails userdetails = new UserDetails();
+
+    response = await client.GetAsync("api/character?search=");
+    List<UserDetails> alluserdetails = await response.Content.ReadAsAsync<List<UserDetails>>();
+    Assert.Equal(System.Net.HttpStatusCode.OK, response.StatusCode);
+    //    for (int i = 0; i < alluserdetails.Count; i++)
+    //    {
+    //        Console.WriteLine("{0}\t{1}\t{2}\t", alluserdetails[i].userid, alluserdetails[i].username, alluserdetails[i].education);
+    //    }
+         
+  }
 
     ///////////////////////////////    P U T    /////////////////////////////////////////
 
